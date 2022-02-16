@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {addCustomerAction, removeCustomerAction} from "../store/customerReducer";
+import {fetchCustomers} from "../asyncAction/customerts";
 
 const ClickerCustomers = () => {
     const dispatch = useDispatch();
@@ -21,8 +22,11 @@ const ClickerCustomers = () => {
     return (
         <div style={{ marginTop: "10px", border: '1px solid black', display: 'flex', flexDirection: 'column'}}>
             <div style={{ display: "flex", justifyContent: 'center' }}>
-                <button onClick={() => addCustomer(prompt())}>
+                <button style={{margin: '5px'}} onClick={() => addCustomer(prompt())}>
                     Добавить клиента
+                </button>
+                <button style={{margin: '5px'}} onClick={() => dispatch(fetchCustomers())}>
+                    Получить клиентов с сервера
                 </button>
             </div>
             {customers.length ? (

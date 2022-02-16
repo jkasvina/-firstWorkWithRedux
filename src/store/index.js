@@ -1,10 +1,13 @@
-import {createStore, combineReducers} from "redux";
+import {createStore, combineReducers, applyMiddleware} from "redux";
 import {cashReducer} from "./cashReducer";
 import {customerReducer} from "./customerReducer";
 import { composeWithDevTools} from "redux-devtools-extension";
+import thunk from "redux-thunk";
 
 // npm i redux-devtools-extension
 // для работы middleware с инструментами разработчика redux-devtools
+
+// npm i redux-thunk - библиотека для работы с асинхронным кодом
 
 // корневой редьюсер - объект, содержащий все редьюсеры
 const rootReducer = combineReducers( {
@@ -16,5 +19,5 @@ const rootReducer = combineReducers( {
     customerReducer
 })
 
-export const store = createStore(rootReducer, composeWithDevTools());
+export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 // composeWithDevTools подключает инструменты разработчика в браузере
