@@ -1,6 +1,5 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {customerReducer} from "../store/customerReducer";
 
 const ClickerCash = () => {
     const dispatch = useDispatch();
@@ -16,7 +15,7 @@ const ClickerCash = () => {
     }
 
     return (
-        <div>
+        <div style={{border: '1px solid black', display: 'flex', justifyContent: 'center'}}>
             <div style={{ fontSize: '3rem' }}>Баланс: {cash}</div>
             <div style={{ display: "flex" }}>
                 <button onClick={() => addCash(Number(prompt()))}>Пополнить счёт</button>
